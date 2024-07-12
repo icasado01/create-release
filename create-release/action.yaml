@@ -4,6 +4,10 @@ inputs:
   release_version:
     description: 'Release version (e.g., 1.0.0)'
     required: true
+  token:
+    description: 'GitHub Token'
+    required: true
+    
 runs:
   using: 'composite'
   steps:
