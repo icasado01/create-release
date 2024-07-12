@@ -4,7 +4,7 @@ inputs:
   release_version:
     description: 'Release version (e.g., 1.0.0)'
     required: true
-  token:
+  GITHUB_TOKEN:
     description: 'GitHub Token'
     required: true
     
@@ -16,8 +16,6 @@ runs:
 
     - name: Create release branch
       shell: bash
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         RELEASE_VERSION=${{ inputs.release_version }}
         BRANCH_NAME="release-${RELEASE_VERSION}"
