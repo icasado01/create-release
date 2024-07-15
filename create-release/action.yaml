@@ -20,4 +20,4 @@ runs:
         RELEASE_VERSION=${{ inputs.release_version }}
         BRANCH_NAME="release-${RELEASE_VERSION}"
         git checkout -b $BRANCH_NAME
-        git push https://x-access-token:${inputs.GITHUB_TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
+        git push https://x-access-token:${{ inputs.GITHUB_TOKEN }}@github.com/${{ github.repository }} $BRANCH_NAME
