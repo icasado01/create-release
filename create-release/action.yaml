@@ -15,9 +15,10 @@ runs:
       run: |
         echo "RELEASE_VERSION=${{ inputs.release_version }}" >> $GITHUB_ENV
         echo "GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}" >> $GITHUB_ENV
+      shell: bash
 
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Create release branch
       shell: bash
