@@ -11,13 +11,17 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Set environment variables
+      run: |
+        echo "RELEASE_VERSION=${{ inputs.release_version }}" >> $GITHUB_ENV
+        echo "GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Create release branch
       shell: bash
       run: |
-        RELEASE_VERSION=${{ inputs.release_version }}
         BRANCH_NAME="release-${RELEASE_VERSION}"
         git checkout -b "$BRANCH_NAME"
-        git push "https://x-access-token:${{ inputs.GITHUB_TOKEN }}@github.com/${{ github.repository }}" "$BRANCH_NAME"
+        git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}" "$BRANCH_NAME"
